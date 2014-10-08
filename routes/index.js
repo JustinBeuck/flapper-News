@@ -70,6 +70,18 @@ router.post('/posts/:post/comments', function(req, res, next) {
   });
 });
 
+outer.param('comment', function(req, res, next, id) {
+  var query = comment.findById(id);
+
+  query.exec(function (err, comment){
+    if (err) { return next(err); }
+    if (!comment) { return next(new Error("can't find comment")); }
+
+    req.comment = comment;
+    return next();
+  });
+});
+
 
 
 
