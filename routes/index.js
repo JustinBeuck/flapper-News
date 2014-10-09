@@ -70,7 +70,7 @@ router.post('/posts/:post/comments', function(req, res, next) {
   });
 });
 
-outer.param('comment', function(req, res, next, id) {
+router.param('comment', function(req, res, next, id) {
   var query = comment.findById(id);
 
   query.exec(function (err, comment){
